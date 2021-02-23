@@ -34,10 +34,44 @@ const userSchema = new mongoose.Schema ({
   "institute_id":String,
   "groups":[
     
+    {
+      type:mongoose.Schema.Types.ObjectId,
+      ref: 'group'
+
+  }
+
   ],
   
-  
-
-  
-
 });
+
+
+const groupSchema = new mongoose.Schema ({
+  "id": String,
+  "name": String,
+  "users":[
+
+    {
+      type:mongoose.Schema.Types.ObjectId,
+      ref: 'user'
+
+  }
+
+
+  ],
+  
+});
+
+const user=conn.model('user',userSchema);
+const group=conn2.model('group',groupSchema);
+
+
+app.post("/user/create",function abc(req,res){
+
+
+  
+})
+
+app.listen(5000, function(){
+  console.log("Server started on port 5000");
+});
+
